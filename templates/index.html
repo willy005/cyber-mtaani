@@ -1,49 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cyber Mtaani - TILL 4490855</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cyber Mtaani</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23020617'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='900' font-size='14' fill='%23facc15'%3ECM%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#020617">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family: 'Segoe UI', sans-serif}
-body{background:#f5f7fb;color:#222}
-.header{background:#0f172a;color:white;padding:20px;text-align:center;position:sticky;top:0;z-index:10}
-.header h1{font-size:26px}
-.header p{opacity:0.8;font-size:14px;margin-top:5px}
-.m-pesa{background:#fef9c3;border:1px solid #facc15;padding:12px;text-align:center;font-weight:bold;margin:20px auto;max-width:600px;border-radius:10px}
-.container{max-width:1100px;margin:0 auto;padding:20px}
-.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-.card{background:white;border-radius:14px;padding:20px;box-shadow:0 4px 12px rgba(0,0,0,0.05);transition:0.2s;border:1px solid #eee}
-.card:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(0,0,0,0.1)}
-.card h3{font-size:18px;margin-bottom:8px}
-.card p{font-size:13px;color:#666;margin-bottom:12px;line-height:1.4}
-.card a{display:inline-block;background:#0f172a;color:white;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:13px}
-.card a:hover{background:#1e293b}
-.badge{display:inline-block;background:#e0f2fe;color:#0284c7;padding:2px 8px;border-radius:20px;font-size:11px;margin-bottom:8px}
-.footer{text-align:center;padding:30px;color:#888;font-size:13px;margin-top:40px}
+html,body{margin:0;padding:0;overflow-x:hidden}
+body{font-family:Arial;background:#0f172a;text-align:center}
+.top{background:#020617;color:white;padding:35px}
+.top h1{margin:0;font-size:32px} .top span{color:#facc15}
+.grid{max-width:1000px;margin:25px auto;padding:15px;display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.card{background:white;padding:20px;border-radius:12px;text-align:center;transition:.3s}
+.card:hover{transform:translateY(-6px)}
+.btn{font-size:12px;padding:7px 14px;background:#0f172a;color:white;border-radius:20px;border:0;cursor:pointer}
+.footer{background:#020617;color:#cbd5e1;padding:40px 20px 20px;margin-top:50px;position:relative;text-align:left;overflow:hidden}
+.footer::before{content:"";position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,transparent,#facc15,transparent);transform:translateX(-100%);animation:lineMove 3s infinite linear}
+@keyframes lineMove{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:30px}
+.footer h4{color:white;margin:0 0 12px;font-size:14px}
+.footer p,.footer li{font-size:12.5px;line-height:1.7;color:#94a3b8}
+.footer ul{list-style:none;padding:0;margin:0}
+.footer ul li{padding-left:14px;position:relative}
+.footer ul li::before{content:"›";position:absolute;left:0;color:#facc15}
+.brand{font-size:20px;font-weight:800;color:white}.brand span{color:#facc15}
+.bottom{max-width:1100px;margin:30px auto 0;padding-top:15px;border-top:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;font-size:11px;color:#64748b}
+.whatsapp{position:fixed;bottom:20px;right:20px;background:#25D366;color:white;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;text-decoration:none;z-index:999}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:1000;align-items:center;justify-content:center;padding:15px}
+.modal.active{display:flex}
+.box{background:white;max-width:400px;width:100%;padding:22px;border-radius:14px;text-align:left}
+.box h3{margin:0;text-align:center}
+.box label{font-size:12px;font-weight:700;margin-top:10px;display:block}
+.box input,.box textarea{width:100%;padding:10px;margin-top:4px;border:1px solid #e2e8f0;border-radius:8px;box-sizing:border-box}
+.box .send{width:100%;background:#25D366;color:white;border:0;padding:11px;border-radius:8px;font-weight:800;margin-top:14px;cursor:pointer}
+.box .close{width:100%;background:#f1f5f9;border:0;padding:10px;border-radius:8px;margin-top:8px;cursor:pointer}
+@media(max-width:800px){.grid{grid-template-columns:1fr 1fr}.footer-inner{grid-template-columns:1fr 1fr}} @media(max-width:500px){.grid{grid-template-columns:1fr}.footer-inner{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<div class="header">
-    <h1>💻 Cyber Mtaani - TILL 6534283</h1>
-    <p>DB: {{ db_type }} | Fast, Trusted, Mtaani Services | WhatsApp: 0706507594</p>
+<div class="top"><h1>CYBER <span>MTAANI</span></h1><p>Trusted Online Cyber | 0706507594</p></div>
+<div class="grid">
+<div class="card"><h3>KRA Services</h3><p>PIN, Returns</p><button class="btn" onclick="openOrder('KRA')">Order Now</button></div>
+<div class="card"><h3>HELB</h3><p>Application</p><button class="btn" onclick="openOrder('HELB')">Order Now</button></div>
+<div class="card"><h3>eCitizen</h3><p>Good Conduct</p><button class="btn" onclick="openOrder('eCitizen')">Order Now</button></div>
+<div class="card"><h3>SHA / NSSF</h3><p>Registration</p><button class="btn" onclick="openOrder('SHA')">Order Now</button></div>
+<div class="card"><h3>NTSA TIMS</h3><p>Logbook</p><button class="btn" onclick="openOrder('NTSA')">Order Now</button></div>
+<div class="card"><h3>CV Writing</h3><p>Pro CV</p><button class="btn" onclick="openOrder('CV')">Order Now</button></div>
+<div class="card"><h3>Printing</h3><p>Typing</p><button class="btn" onclick="openOrder('Printing')">Order Now</button></div>
+<div class="card"><h3>eTIMS</h3><p>Setup</p><button class="btn" onclick="openOrder('eTIMS')">Order Now</button></div>
+<div class="card"><h3>Other</h3><p>Any Service</p><button class="btn" onclick="openOrder('Other')">Order Now</button></div>
 </div>
-
-<div class="m-pesa">💰 LIPA NA M-PESA TILL: 6534283 - Cyber Mtaani</div>
-
-<div class="container">
-    <div class="services">
-        <div class="card"><span class="badge">KRA</span><h3>KRA Services</h3><p>KRA PIN Registration, Filing Returns, Tax Compliance Certificate</p><a href="/order?service=KRA Services">Order Now</a></div>
-        <div class="card"><span class="badge">HELB</span><h3>HELB Application</h3><p>First Time & Subsequent HELB Loan Application, Compliance</p><a href="/order?service=HELB Application">Order Now</a></div>
-        <div class="card"><span class="badge">eCitizen</span><h3>eCitizen Services</h3><p>Good Conduct, Passport, Driving License Renewal, Business Registration</p><a href="/order?service=eCitizen Services">Order Now</a></div>
-        <div class="card"><span class="badge">SHA / NHIF</span><h3>SHA & NSSF</h3><p>SHA Registration, NSSF Registration & Statements</p><a href="/order?service=SHA NSSF">Order Now</a></div>
-        <div class="card"><span class="badge">NTSA</span><h3>NTSA Services</h3><p>Driving License, Logbook Transfer, TIMS Account</p><a href="/order?service=NTSA">Order Now</a></div>
-        <div class="card"><span class="badge">CV</span><h3>CV & Cover Letter</h3><p>Professional CV Writing, Cover Letter, Job Application</p><a href="/order?service=CV Writing">Order Now</a></div>
-        <div class="card"><span class="badge">Printing</span><h3>Printing & Cyber</h3><p>Typing, Printing, Scanning, Lamination, Online Applications</p><a href="/order?service=Printing">Order Now</a></div>
-        <div class="card"><span class="badge">ETR</span><h3>KRA eTIMS</h3><p>eTIMS Registration & Invoicing Setup</p><a href="/order?service=eTIMS">Order Now</a></div>
-    </div>
+<div class="footer">
+<div class="footer-inner">
+<div><div class="brand">CYBER <span>MTAANI</span></div><p>We are your neighborhood online cyber. Fast, secure and available 24/7.</p></div>
+<div><h4>OUR SERVICES</h4><ul><li>KRA PIN, Returns, TCC, eTIMS</li><li>HELB, KUCCPS, eCitizen, NTSA</li><li>SHA, SHIF, NSSF, Good Conduct</li><li>CV Writing, Job Application</li><li>Typing, Printing, Scanning</li></ul></div>
+<div><h4>CONTACT US</h4><div>📞 0706507594</div><div>💬 WhatsApp: 0706507594</div><div>📧 cybermtaani@gmail.com</div><div>📍 Serving All Kenya — Online</div><div>🕒 Mon - Sun: 6AM - 11PM</div></div>
 </div>
-
-<div class="footer">Cyber Mtaani © 2026 - Lipa na M-Pesa Till 6534283 - All Rights Reserved<br>Built with ❤️ in Mtaani</div>
+<div class="bottom"><div>© 2026 Cyber Mtaani</div><div>Fast • Secure • Affordable</div></div>
+</div>
+<a class="whatsapp" href="https://wa.me/254706507594" target="_blank">💬</a>
+<div class="modal" id="orderModal">
+<div class="box">
+<h3 id="serviceTitle">Order Service</h3>
+<label>Service</label><input id="serviceInput" readonly style="background:#f8fafc;font-weight:700">
+<label>Your Name</label><input id="nameInput" placeholder="John Mwangi">
+<label>Phone</label><input id="phoneInput" placeholder="07...">
+<label>Details</label><textarea id="detailsInput" rows="3" placeholder="What do you need?"></textarea>
+<button class="send" onclick="sendToWhatsApp()">SEND VIA WHATSAPP</button>
+<button class="close" onclick="closeOrder()">Cancel</button>
+</div>
+</div>
+<script>
+let currentService='';
+function openOrder(s){currentService=s;document.getElementById('serviceInput').value=s;document.getElementById('serviceTitle').innerText=s+' - Order';document.getElementById('orderModal').classList.add('active');}
+function closeOrder(){document.getElementById('orderModal').classList.remove('active');}
+function sendToWhatsApp(){
+const n=document.getElementById('nameInput').value, p=document.getElementById('phoneInput').value, d=document.getElementById('detailsInput').value;
+if(!n||!p){alert('Enter name and phone');return;}
+const msg=`Hello Cyber Mtaani%0ASERVICE: ${currentService}%0AName: ${n}%0APhone: ${p}%0ADetails: ${d}`;
+window.open('https://wa.me/254706507594?text='+msg,'_blank');closeOrder();
+}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js');}
+</script>
 </body>
 </html>
