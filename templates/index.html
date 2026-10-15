@@ -1,56 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cyber Mtaani</title>
-  <link rel="stylesheet" href="style.css">
   <link rel="manifest" href="manifest.json">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background:#0a0a0a; color:#fff; font-family: 'Segoe UI', Arial, sans-serif; }
+
+    header { padding:20px; text-align:center; border-bottom:1px solid #222; }
+    header h1 { font-size:24px; }
+    header p { color:#888; font-size:13px; margin-top:4px; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      padding: 20px;
+      justify-content: center;
+    }
+    .service-card {
+      background: #151515;
+      border: 1px solid #222;
+      border-radius: 10px;
+      padding: 14px;
+      max-width: 260px;
+      height: 150px;
+      transition: 0.2s;
+    }
+    .service-card:hover { border-color:#444; transform: translateY(-2px); }
+    .service-card h3 { font-size:14px; color:#fff; }
+    .service-card p { font-size:12px; color:#888; margin-top:6px; line-height:1.4; }
+    
+    footer { text-align:center; padding:20px; color:#555; font-size:11px; border-top:1px solid #222; margin-top:30px; }
+  </style>
 </head>
 <body>
-<div class="top"><h1>CYBER <span>MTAANI</span></h1><p>Trusted Online Cyber | 0706507594</p></div>
-<div class="grid">
-<div class="card"><h3>KRA Services</h3><p>PIN, Returns</p><button class="btn" onclick="openOrder('KRA')">Order Now</button></div>
-<div class="card"><h3>HELB</h3><p>Application</p><button class="btn" onclick="openOrder('HELB')">Order Now</button></div>
-<div class="card"><h3>eCitizen</h3><p>Good Conduct</p><button class="btn" onclick="openOrder('eCitizen')">Order Now</button></div>
-<div class="card"><h3>SHA / NSSF</h3><p>Registration</p><button class="btn" onclick="openOrder('SHA')">Order Now</button></div>
-<div class="card"><h3>NTSA TIMS</h3><p>Logbook</p><button class="btn" onclick="openOrder('NTSA')">Order Now</button></div>
-<div class="card"><h3>CV Writing</h3><p>Pro CV</p><button class="btn" onclick="openOrder('CV')">Order Now</button></div>
-<div class="card"><h3>Printing</h3><p>Typing</p><button class="btn" onclick="openOrder('Printing')">Order Now</button></div>
-<div class="card"><h3>eTIMS</h3><p>Setup</p><button class="btn" onclick="openOrder('eTIMS')">Order Now</button></div>
-<div class="card"><h3>Other</h3><p>Any Service</p><button class="btn" onclick="openOrder('Other')">Order Now</button></div>
-</div>
-<div class="footer">
-<div class="footer-inner">
-<div><div class="brand">CYBER <span>MTAANI</span></div><p>We are your neighborhood online cyber. Fast, secure and available 24/7.</p></div>
-<div><h4>OUR SERVICES</h4><ul><li>KRA PIN, Returns, TCC, eTIMS</li><li>HELB, KUCCPS, eCitizen, NTSA</li><li>SHA, SHIF, NSSF, Good Conduct</li><li>CV Writing, Job Application</li><li>Typing, Printing, Scanning</li></ul></div>
-<div><h4>CONTACT US</h4><div>📞 0706507594</div><div>💬 WhatsApp: 0706507594</div><div>📧 cybermtaani@gmail.com</div><div>📍 Serving All Kenya — Online</div><div>🕒 Mon - Sun: 6AM - 11PM</div></div>
-</div>
-<div class="bottom"><div>© 2026 Cyber Mtaani</div><div>Fast • Secure • Affordable</div></div>
-</div>
-<a class="whatsapp" href="https://wa.me/254706507594" target="_blank">💬</a>
-<div class="modal" id="orderModal">
-<div class="box">
-<h3 id="serviceTitle">Order Service</h3>
-<label>Service</label><input id="serviceInput" readonly style="background:#f8fafc;font-weight:700">
-<label>Your Name</label><input id="nameInput" placeholder="John Mwangi">
-<label>Phone</label><input id="phoneInput" placeholder="07...">
-<label>Details</label><textarea id="detailsInput" rows="3" placeholder="What do you need?"></textarea>
-<button class="send" onclick="sendToWhatsApp()">SEND VIA WHATSAPP</button>
-<button class="close" onclick="closeOrder()">Cancel</button>
-</div>
-</div>
-<script>
-let currentService='';
-function openOrder(s){currentService=s;document.getElementById('serviceInput').value=s;document.getElementById('serviceTitle').innerText=s+' - Order';document.getElementById('orderModal').classList.add('active');}
-function closeOrder(){document.getElementById('orderModal').classList.remove('active');}
-function sendToWhatsApp(){
-const n=document.getElementById('nameInput').value, p=document.getElementById('phoneInput').value, d=document.getElementById('detailsInput').value;
-if(!n||!p){alert('Enter name and phone');return;}
-const msg=`Hello Cyber Mtaani%0ASERVICE: ${currentService}%0AName: ${n}%0APhone: ${p}%0ADetails: ${d}`;
-window.open('https://wa.me/254706507594?text='+msg,'_blank');closeOrder();
-}
-if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js');}
-</script>
+
+  <header>
+    <h1>Cyber Mtaani</h1>
+    <p>Your Local Cyber Services</p>
+  </header>
+
+  <main>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>KRA Services</h3>
+        <p>Tax Returns, PIN Registration, Compliance Certificate</p>
+      </div>
+      <div class="service-card">
+        <h3>eCitizen</h3>
+        <p>Good Conduct, Business Registration, Driving Licence</p>
+      </div>
+      <div class="service-card">
+        <h3>Printing & Scanning</h3>
+        <p>Photocopy, Lamination, Colour Printing</p>
+      </div>
+      <div class="service-card">
+        <h3>Online Applications</h3>
+        <p>KUCCPS, HELB, TSC, University Applications</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2026 Cyber Mtaani
+  </footer>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(()=>{});
+    }
+  </script>
 </body>
 </html>
