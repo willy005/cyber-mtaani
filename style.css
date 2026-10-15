@@ -1,0 +1,22 @@
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#0a0a0a; color:#fff; font-family: Arial, sans-serif; }
+
+/* SERVICES - SMALL + DARK */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  padding: 20px;
+  justify-content: center;
+}
+.service-card {
+  background: #151515;
+  border: 1px solid #222;
+  border-radius: 10px;
+  padding: 14px;
+  width: 100%;
+  max-width: 260px;
+  height: 150px;
+}
+.service-card h3 { font-size:14px; color:#fff; }
+.service-card p { font-size:12px; color:#888; margin-top:6px; }
